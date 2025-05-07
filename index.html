@@ -16,7 +16,7 @@
         height: 100vh;
         flex-direction:column;
         text-align: center;
-        dont-family: Arial,sans-serif
+        font-family: Arial,sans-serif
       }
     img{
       width: 200px;/*Resim boyutu (isteğe göre değiştirilebilir)*/
@@ -30,7 +30,7 @@
     }
     button{
       padding:10px 20px;
-      font-size:16px
+      font-size:16px;
       border:none;
       cursor:pointer;
       margin:5px;
@@ -48,13 +48,12 @@
 </head>
     <body>
       <img
-        src= "https://via.placeholder.com
-        /200" alt="Barış Resmi">
+        src= "https://via.placeholder.com/200" 
+        alt="Barış Resmi">
       <h2>Benimle barışır mısın?</h2>
       <div class="buttons">       
           <button id="evet"
-            onelick="evetTiklandi()">Evet</button>
-          button>
+            oneclick="evetTiklandi()">Evet</button>
           <button id="hayir"
             onmouseover="kac()">Hayır</button>
       </div>    
@@ -67,9 +66,9 @@
                 let hayir =
                   document.getElementById("hayir");
                 let x = Math.random()*
-                  (window.innerWidth-100);//Sayfanın genişliği içinde rastgale X konumu
+                  (parent.offsetWidth-100);//Sayfanın genişliği içinde rastgale X konumu
                 let y = Math.random()*
-                  (window.innerHeight-50);//Sayfanın yüksekliği içinde rastgale Y konumu
+                  (parent.offsetWidth-50);//Sayfanın yüksekliği içinde rastgale Y konumu
                 hayir.style.left=x+"px";
                 hayir.style.top=y+"px";
               }
