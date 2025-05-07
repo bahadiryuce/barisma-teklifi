@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Barış Teklifi</title>
   <style>
-   *{
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      }
-      body{
-        display : flex ;
-        justify-content : center ;
-        height: 100vh;
-        flex-direction:column;
-        text-align: center;
-        font-family: Arial,sans-serif
-      }
-    img{
-      width: 200px;/*Resim boyutu (isteğe göre değiştirilebilir)*/
     }
-    h2{
-      margin-top:20px;
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      text-align: center;
+      font-family: Arial, sans-serif;
     }
-    .buttons{
-      margin-top:20px;
-      position:relative;
+    img {
+      width: 200px;
     }
-    button{
-      padding:10px 20px;
-      font-size:16px;
-      border:none;
-      cursor:pointer;
-      margin:5px;
+    h2 {
+      margin-top: 20px;
+    }
+    .buttons {
+      margin-top: 20px;
+      position: relative;
+      width: 100%;
+      height: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin: 5px;
       position: absolute;
     }
-    #evet{
-      background-color:green;
-      color:white;
-    }
-    #hayır{
-      background-color:red;
+    #evet {
+      background-color: green;
       color: white;
+      left: 40%;
     }
-    </style>
+    #hayir {
+      background-color: red;
+      color: white;
+      left: 50%;
+    }
+  </style>
 </head>
-    <body>
-      <img
-        src= "https://via.placeholder.com/200" 
-        alt="Barış Resmi">
-      <h2>Benimle barışır mısın?</h2>
-      <div class="buttons">       
-          <button id="evet"
-            oneclick="evetTiklandi()">Evet</button>
-          <button id="hayir"
-            onmouseover="kac()">Hayır</button>
-      </div>    
-            <script>
-              function evetTiklandi() {
+<body>
+  <img src="https://via.placeholder.com/200" alt="Barış Resmi" />
+  <h2>Benimle barışır mısın?</h2>
+  <div class="buttons">
+    <button id="evet" onclick="evetTiklandi()">Evet</button>
+    <button id="hayir" onmouseover="kac()">Hayır</button>
+  </div>
 
-                window.open("https://www.google.com","_blank");// Hedef URL'yi buradan değiştirebilirsin
-              }
-              function kac() {
-                let hayir =
-                  document.getElementById("hayir");
-                let x = Math.random()*
-                  (parent.offsetWidth-100);//Sayfanın genişliği içinde rastgale X konumu
-                let y = Math.random()*
-                  (parent.offsetWidth-50);//Sayfanın yüksekliği içinde rastgale Y konumu
-                hayir.style.left=x+"px";
-                hayir.style.top=y+"px";
-              }
-              </script>
-          </body>
-          </html>
+  <script>
+    function evetTiklandi() {
+      window.open("https://www.google.com", "_blank");
+    }
+    function kac() {
+      let hayir = document.getElementById("hayir");
+      let x = Math.random() * (window.innerWidth - 100);
+      let y = Math.random() * (window.innerHeight - 50);
+      hayir.style.left = x + "px";
+      hayir.style.top = y + "px";
+    }
+  </script>
+</body>
+</html>
