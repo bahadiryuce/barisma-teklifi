@@ -1,119 +1,133 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Barış Teklifi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elif'e Özel</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background: #ffe6e6;
       margin: 0;
       padding: 0;
+      height: 100vh;
+      background: linear-gradient(to right, #f8bbd0, #f48fb1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
-    img {
-      width: 200px;
-      margin-top: 40px;
-    }
-    h2 {
-      margin-top: 20px;
-    }
-    .buttons {
-      margin-top: 30px;
+
+    .container {
       position: relative;
-      height: 100px;
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
     }
+
+    h1 {
+      font-size: 24px;
+      color: #880e4f;
+    }
+
+    .btn-container {
+      margin-top: 20px;
+      position: relative;
+      width: 100%;
+      height: 60px;
+    }
+
     button {
-      padding: 12px 24px;
-      font-size: 18px;
+      padding: 10px 20px;
       border: none;
       border-radius: 10px;
+      font-weight: bold;
       cursor: pointer;
-      position: absolute;
     }
+
     #evet {
-      background-color: green;
+      background-color: #8e24aa;
       color: white;
-      left: 40%;
     }
+
     #hayir {
-      background-color: red;
+      background-color: #f44336;
       color: white;
-      left: 55%;
-    }
-    #uyari {
       position: absolute;
-      bottom: 20px;
-      width: 100%;
-      font-size: 14px;
-      color: #444;
-      opacity: 0;
-      transition: opacity 0.8s;
+    }
+
+    #musicButton {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      background-color: #8e24aa;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      z-index: 100;
     }
   </style>
 </head>
 <body>
-  <img src="Barış Resmi.jpg" alt="Barış Resmi" />
-  <h2>Benimle barışır mısın?</h2>
-  <div class="buttons">
-    <button id="evet" onclick="evetTiklandi()">Evet</button>
-    <button id="hayir" onmouseover="kac()">Hayır</button>
+  <audio id="muzik" loop>
+    <source src="senin-muzigin.mp3" type="audio/mpeg">
+  </audio>
+  <button id="musicButton" onclick="toggleMusic()">🎵 Müzik Aç</button>
+
+  <div class="container">
+    <h1>Elif, seni çok özledim...</h1>
+    <div class="btn-container">
+      <button id="evet" onclick="location.href='intro.html'">Evet</button>
+      <button id="hayir">Hayır</button>
+    </div>
   </div>
-  <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
 
   <script>
-    let uyariGosterildi = false;
+    const muzik = document.getElementById("muzik");
+    const musicButton = document.getElementById("musicButton");
+    let isPlaying = false;
 
-    function evetTiklandi() {
-      window.location.href = "intro.html";
-    }
-
-    function kac() {
-      const hayir = document.getElementById("hayir");
-      const uyari = document.getElementById("uyari");
-
-      // Sadece ekranın ortasına yakın bir alanda hareket eder
-      const maxX = window.innerWidth * 0.6;
-      const minX = window.innerWidth * 0.2;
-      const maxY = window.innerHeight * 0.6;
-      const minY = window.innerHeight * 0.3;
-
-      const x = Math.random() * (maxX - minX) + minX;
-      const y = Math.random() * (maxY - minY) + minY;
-
-      hayir.style.left = x + "px";
-      hayir.style.top = y + "px";
-
-      if (!uyariGosterildi) {
-        uyari.style.opacity = 1;
-        uyariGosterildi = true;
-        setTimeout(() => {
-          uyari.style.opacity = 0;
-        }, 2000);
+    function toggleMusic() {
+      if (isPlaying) {
+        muzik.pause();
+        musicButton.textContent = "🎵 Müzik Aç";
+      } else {
+        muzik.play();
+        musicButton.textContent = "🔇 Müzik Kapat";
       }
+      isPlaying = !isPlaying;
     }
+
+    const hayirBtn = document.getElementById("hayir");
+    const container = document.querySelector(".btn-container");
+
+    function getRandomPosition() {
+      const containerRect = container.getBoundingClientRect();
+      const buttonWidth = hayirBtn.offsetWidth;
+      const buttonHeight = hayirBtn.offsetHeight;
+      const maxX = containerRect.width - buttonWidth;
+      const maxY = containerRect.height - buttonHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      return { x, y };
+    }
+
+    hayirBtn.addEventListener("mouseenter", () => {
+      const pos = getRandomPosition();
+      hayirBtn.style.left = `${pos.x}px`;
+      hayirBtn.style.top = `${pos.y}px`;
+    });
   </script>
-   <audio id="müzik" loop>
-  <source src="senin-muzigin.mp3" type="audio/mpeg" />
-</audio>
-<button onclick="müzikToggle()" style="position: fixed; top: 20px; right: 20px; padding: 10px; border-radius: 10px; background-color: #8e24aa; color: white; font-weight: bold; border: none; cursor: pointer;">
-  🎵 Müzik
-</button>
-
-<script>
-  const müzik = document.getElementById("müzik");
-  let çalıyorMu = false;
-
-  function müzikToggle() {
-    if (çalıyorMu) {
-      müzik.pause();
-    } else {
-      müzik.play();
-    }
-    çalıyorMu = !çalıyorMu;
-  }
-</script>
 </body>
 </html>
