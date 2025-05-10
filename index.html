@@ -20,6 +20,7 @@
       background: #ffe6e6;
       overflow: hidden;
       text-align: center;
+      position: relative;
     }
     img {
       width: 200px;
@@ -32,6 +33,7 @@
       margin-top: 20px;
       position: relative;
       height: 100px;
+      width: 100%;
     }
     button {
       padding: 12px 24px;
@@ -45,18 +47,20 @@
     #evet {
       background-color: green;
       color: white;
-      right: 0;
+      left: 50%;
+      transform: translateX(-120%);
     }
     #hayir {
       background-color: red;
       color: white;
-      left: 0;
+      left: 50%;
+      transform: translateX(20%);
     }
     #mesaj {
       margin-top: 20px;
       font-size: 20px;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
       color: #d60087;
     }
     .kalp {
@@ -84,6 +88,17 @@
       opacity: 0;
       transition: opacity 0.8s;
     }
+    #muzikKontrol {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -95,15 +110,24 @@
   </div>
   <div id="mesaj">Piremsesim seni çok seviyorum 💖</div>
   <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
+  <button id="muzikKontrol" onclick="muzikKontrol()">Müziği Aç</button>
 
-  <audio id="muzik" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
+  <!-- Müzik (sen daha sonra ses dosyasını ekleyeceksin) -->
+  <audio id="muzik" src=""></audio>
 
   <script>
-    let uyariGosterildi = false; // sadece bir kere gösterilecek
+    let uyariGosterildi = false;
+    let muzikCalıyor = false;
 
     function evetTiklandi() {
-      document.getElementById("mesaj").style.opacity = 1;
-      document.getElementById("muzik").play();
+      const mesaj = document.getElementById("mesaj");
+      mesaj.style.opacity = 1;
+
+      setTimeout(() => {
+        mesaj.style.opacity = 0;
+        // Burada videoya yönlendirme yapılır
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // BURAYI kendi videonla değiştir
+      }, 1500);
 
       // Kalp animasyonu
       for (let i = 0; i < 30; i++) {
@@ -118,26 +142,48 @@
     }
 
     function kac() {
-      let hayir = document.getElementById("hayir");
-      let butonWidth = hayir.offsetWidth;
-      let butonHeight = hayir.offsetHeight;
+      const hayir = document.getElementById("hayir");
+      const uyari = document.getElementById("uyari");
 
-      let maxX = window.innerWidth - butonWidth;
-      let maxY = window.innerHeight - butonHeight - 50; // biraz yukarda kalsın
+      const buttonWidth = hayir.offsetWidth;
+      const buttonHeight = hayir.offsetHeight;
 
-      let x = Math.random() * maxX;
-      let y = Math.random() * maxY;
+      const maxX = window.innerWidth - buttonWidth;
+      const maxY = window.innerHeight - buttonHeight - 50; // Alt boşluk bırak
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
       hayir.style.left = x + "px";
       hayir.style.top = y + "px";
 
       if (!uyariGosterildi) {
-        uyariGosterildi = true;
-        let uyari = document.getElementById("uyari");
         uyari.style.opacity = 1;
+        uyariGosterildi = true;
+
         setTimeout(() => {
           uyari.style.opacity = 0;
-        }, 2000); // 2 saniye sonra gizle
+        }, 2000);
+      }
+    }
+
+    function muzikKontrol() {
+      const muzik = document.getElementById("muzik");
+      const buton = document.getElementById("muzikKontrol");
+
+      if (!muzik.src) {
+        alert("Henüz müzik eklenmedi. Lütfen src kısmına müzik dosyası ekleyin.");
+        return;
+      }
+
+      if (muzikCalıyor) {
+        muzik.pause();
+        buton.innerText = "Müziği Aç";
+        muzikCalıyor = false;
+      } else {
+        muzik.play();
+        buton.innerText = "Müziği Kapat";
+        muzikCalıyor = true;
       }
     }
   </script>
