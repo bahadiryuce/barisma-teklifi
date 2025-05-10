@@ -1,36 +1,90 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mesajım</title>
+  <meta charset="UTF-8">
+  <title>Seninle Olan Anılar</title>
   <style>
     body {
-      background-color: #fff;
       font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+    }
+
+    .poem-box {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin-bottom: 2rem;
       text-align: center;
     }
-    h2 {
-      color: #e91e63;
-      margin-bottom: 20px;
-    }
+
     video {
-      max-width: 100%;
+      max-width: 90%;
       height: auto;
-      border: 3px solid #e91e63;
-      border-radius: 10px;
+      border-radius: 12px;
+    }
+
+    .music-button {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
-  <h2>Senin için hazırladığım mesaj 💌</h2>
-  <video controls autoplay>
-    <source src="benim-videom.mp4" type="video/mp4" />
-    Tarayıcınız video etiketini desteklemiyor.
-  </video>
+
+<button class="music-button" onclick="toggleMusic()">Müziği Aç</button>
+
+<div class="poem-box">
+  <h2>Senin İçin...</h2>
+  <p>
+    Kelimeler yetmez seni anlatmaya... <br>
+    Zaman geçti, ama hislerim hep aynı. <br>
+    İçimde bir özlem, tarifsiz, derin... <br>
+    Her an seni düşünüyorum, her an seninle yaşıyorum. <br>
+  </p>
+</div>
+
+<video controls autoplay>
+  <source src="video.mp4" type="video/mp4">
+  Tarayıcınız video etiketini desteklemiyor.
+</video>
+
+<audio id="bgMusic" loop>
+  <source src="muzik.mp3" type="audio/mpeg">
+  Tarayıcınız ses etiketini desteklemiyor.
+</audio>
+
+<script>
+  let isMusicPlaying = false;
+  function toggleMusic() {
+    const audio = document.getElementById("bgMusic");
+    const button = document.querySelector(".music-button");
+
+    if (isMusicPlaying) {
+      audio.pause();
+      button.textContent = "Müziği Aç";
+    } else {
+      audio.play();
+      button.textContent = "Müziği Kapat";
+    }
+
+    isMusicPlaying = !isMusicPlaying;
+  }
+</script>
+
 </body>
 </html>
