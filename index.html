@@ -5,35 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Barış Teklifi</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: #ffe6e6;
-      overflow: hidden;
       text-align: center;
-      position: relative;
+      background: #ffe6e6;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
     img {
       width: 200px;
+      margin-top: 40px;
     }
     h2 {
       margin-top: 20px;
-      font-size: 24px;
     }
     .buttons {
-      margin-top: 20px;
+      margin-top: 30px;
       position: relative;
       height: 100px;
-      width: 100%;
     }
     button {
       padding: 12px 24px;
@@ -41,63 +31,26 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      margin: 5px;
       position: absolute;
     }
     #evet {
       background-color: green;
       color: white;
-      left: 50%;
-      transform: translateX(-120%);
+      left: 40%;
     }
     #hayir {
       background-color: red;
       color: white;
-      left: 50%;
-      transform: translateX(20%);
-    }
-    #mesaj {
-      margin-top: 20px;
-      font-size: 20px;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      color: #d60087;
-    }
-    .kalp {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      animation: fly 3s linear forwards;
-      pointer-events: none;
-    }
-    @keyframes fly {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-600px);
-        opacity: 0;
-      }
+      left: 55%;
     }
     #uyari {
       position: absolute;
       bottom: 20px;
+      width: 100%;
       font-size: 14px;
       color: #444;
       opacity: 0;
       transition: opacity 0.8s;
-    }
-    #muzikKontrol {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #ff69b4;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
     }
   </style>
 </head>
@@ -108,51 +61,27 @@
     <button id="evet" onclick="evetTiklandi()">Evet</button>
     <button id="hayir" onmouseover="kac()">Hayır</button>
   </div>
-  <div id="mesaj">Piremsesim seni çok seviyorum 💖</div>
   <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
-  <button id="muzikKontrol" onclick="muzikKontrol()">Müziği Aç</button>
-
-  <!-- Müzik (sen daha sonra ses dosyasını ekleyeceksin) -->
-  <audio id="muzik" src=""></audio>
 
   <script>
     let uyariGosterildi = false;
-    let muzikCalıyor = false;
 
     function evetTiklandi() {
-      const mesaj = document.getElementById("mesaj");
-      mesaj.style.opacity = 1;
-
-      setTimeout(() => {
-        mesaj.style.opacity = 0;
-        // Burada videoya yönlendirme yapılır
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // BURAYI kendi videonla değiştir
-      }, 1500);
-
-      // Kalp animasyonu
-      for (let i = 0; i < 30; i++) {
-        let kalp = document.createElement("div");
-        kalp.classList.add("kalp");
-        kalp.innerHTML = "💖";
-        kalp.style.left = Math.random() * window.innerWidth + "px";
-        kalp.style.top = window.innerHeight + "px";
-        document.body.appendChild(kalp);
-        setTimeout(() => kalp.remove(), 3000);
-      }
+      window.location.href = "intro.html";
     }
 
     function kac() {
       const hayir = document.getElementById("hayir");
       const uyari = document.getElementById("uyari");
 
-      const buttonWidth = hayir.offsetWidth;
-      const buttonHeight = hayir.offsetHeight;
+      // Sadece ekranın ortasına yakın bir alanda hareket eder
+      const maxX = window.innerWidth * 0.6;
+      const minX = window.innerWidth * 0.2;
+      const maxY = window.innerHeight * 0.6;
+      const minY = window.innerHeight * 0.3;
 
-      const maxX = window.innerWidth - buttonWidth;
-      const maxY = window.innerHeight - buttonHeight - 50; // Alt boşluk bırak
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+      const x = Math.random() * (maxX - minX) + minX;
+      const y = Math.random() * (maxY - minY) + minY;
 
       hayir.style.left = x + "px";
       hayir.style.top = y + "px";
@@ -160,30 +89,9 @@
       if (!uyariGosterildi) {
         uyari.style.opacity = 1;
         uyariGosterildi = true;
-
         setTimeout(() => {
           uyari.style.opacity = 0;
         }, 2000);
-      }
-    }
-
-    function muzikKontrol() {
-      const muzik = document.getElementById("muzik");
-      const buton = document.getElementById("muzikKontrol");
-
-      if (!muzik.src) {
-        alert("Henüz müzik eklenmedi. Lütfen src kısmına müzik dosyası ekleyin.");
-        return;
-      }
-
-      if (muzikCalıyor) {
-        muzik.pause();
-        buton.innerText = "Müziği Aç";
-        muzikCalıyor = false;
-      } else {
-        muzik.play();
-        buton.innerText = "Müziği Kapat";
-        muzikCalıyor = true;
       }
     }
   </script>
