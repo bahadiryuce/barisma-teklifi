@@ -31,27 +31,6 @@
   <video controls autoplay>
     <source src="benim-videom.mp4" type="video/mp4" />
     Tarayıcınız video etiketini desteklemiyor.
-    <audio id="müzik" loop>
-  <source src="senin-muzigin.mp3" type="audio/mpeg" />
-</audio>
-<button onclick="müzikToggle()" style="position: fixed; top: 20px; right: 20px; padding: 10px; border-radius: 10px; background-color: #8e24aa; color: white; font-weight: bold; border: none; cursor: pointer;">
-  🎵 Müzik
-</button>
-
-<script>
-  const müzik = document.getElementById("müzik");
-  let çalıyorMu = false;
-
-  function müzikToggle() {
-    if (çalıyorMu) {
-      müzik.pause();
-    } else {
-      müzik.play();
-    }
-    çalıyorMu = !çalıyorMu;
-  }
-</script>
-
   </video>
 </body>
 </html>
