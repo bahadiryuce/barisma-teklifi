@@ -99,6 +99,8 @@
   <audio id="muzik" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3"></audio>
 
   <script>
+    let uyariGosterildi = false; // sadece bir kere gösterilecek
+
     function evetTiklandi() {
       document.getElementById("mesaj").style.opacity = 1;
       document.getElementById("muzik").play();
@@ -117,14 +119,26 @@
 
     function kac() {
       let hayir = document.getElementById("hayir");
-      let x = Math.random() * (window.innerWidth - 100);
-      let y = Math.random() * (window.innerHeight - 50);
+      let butonWidth = hayir.offsetWidth;
+      let butonHeight = hayir.offsetHeight;
+
+      let maxX = window.innerWidth - butonWidth;
+      let maxY = window.innerHeight - butonHeight - 50; // biraz yukarda kalsın
+
+      let x = Math.random() * maxX;
+      let y = Math.random() * maxY;
+
       hayir.style.left = x + "px";
       hayir.style.top = y + "px";
 
-      // Yazı fade-in
-      let uyari = document.getElementById("uyari");
-      uyari.style.opacity = 1;
+      if (!uyariGosterildi) {
+        uyariGosterildi = true;
+        let uyari = document.getElementById("uyari");
+        uyari.style.opacity = 1;
+        setTimeout(() => {
+          uyari.style.opacity = 0;
+        }, 2000); // 2 saniye sonra gizle
+      }
     }
   </script>
 </body>
