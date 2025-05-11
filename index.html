@@ -40,9 +40,9 @@
 
     .btn-container {
       margin-top: 20px;
-      display: flex;
-      gap: 20px;
       position: relative;
+      width: 100%;
+      height: 60px;
     }
 
     button {
@@ -51,7 +51,6 @@
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
-      transition: transform 0.3s ease;
     }
 
     #evet {
@@ -63,21 +62,6 @@
       background-color: #f44336;
       color: white;
       position: absolute;
-      animation: fadeInBounce 0.8s ease-in-out;
-    }
-
-    @keyframes fadeInBounce {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      60% {
-        opacity: 1;
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
     }
 
     #musicButton {
@@ -93,21 +77,6 @@
       cursor: pointer;
       z-index: 100;
     }
-
-    #uyari {
-      position: absolute;
-      bottom: 15px;
-      color: #880e4f;
-      font-weight: bold;
-      display: none;
-      animation: fadeUyari 1s ease-in-out;
-    }
-
-    @keyframes fadeUyari {
-      0% { opacity: 0; transform: translateY(10px); }
-      50% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-10px); }
-    }
   </style>
 </head>
 <body>
@@ -116,14 +85,13 @@
   </audio>
   <button id="musicButton" onclick="toggleMusic()">🎵 Müzik Aç</button>
 
-  <div class="container" id="mainContainer">
+  <div class="container">
     <h1>Benimle barışır mısın?</h1>
     <div class="btn-container">
       <button id="evet" onclick="location.href='intro.html'">Evet</button>
       <button id="hayir">Hayır</button>
     </div>
-    <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
-  </div>
+  <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
 
   <script>
     const muzik = document.getElementById("muzik");
@@ -142,14 +110,14 @@
     }
 
     const hayirBtn = document.getElementById("hayir");
-    const evetBtn = document.getElementById("evet");
-    const uyari = document.getElementById("uyari");
-    const container = document.getElementById("mainContainer");
+    const container = document.querySelector(".btn-container");
 
     function getRandomPosition() {
       const containerRect = container.getBoundingClientRect();
-      const maxX = containerRect.width - hayirBtn.offsetWidth;
-      const maxY = containerRect.height - hayirBtn.offsetHeight;
+      const buttonWidth = hayirBtn.offsetWidth;
+      const buttonHeight = hayirBtn.offsetHeight;
+      const maxX = containerRect.width - buttonWidth;
+      const maxY = containerRect.height - buttonHeight;
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
       return { x, y };
@@ -159,13 +127,6 @@
       const pos = getRandomPosition();
       hayirBtn.style.left = `${pos.x}px`;
       hayirBtn.style.top = `${pos.y}px`;
-
-      // Uyarıyı geçici göster
-      uyari.style.display = "block";
-      uyari.style.animation = "fadeUyari 1.5s ease-in-out";
-      setTimeout(() => {
-        uyari.style.display = "none";
-      }, 1500);
     });
   </script>
 </body>
