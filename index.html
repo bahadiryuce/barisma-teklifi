@@ -40,9 +40,9 @@
 
     .btn-container {
       margin-top: 20px;
+      display: flex;
+      gap: 20px; /* Butonlar arası boşluk */
       position: relative;
-      width: 100%;
-      height: 60px;
     }
 
     button {
@@ -51,6 +51,7 @@
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
     #evet {
@@ -62,6 +63,21 @@
       background-color: #f44336;
       color: white;
       position: absolute;
+      animation: fadeInBounce 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInBounce {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
     #musicButton {
@@ -77,6 +93,12 @@
       cursor: pointer;
       z-index: 100;
     }
+
+    #uyari {
+      margin-top: 15px;
+      color: #880e4f;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -91,7 +113,8 @@
       <button id="evet" onclick="location.href='intro.html'">Evet</button>
       <button id="hayir">Hayır</button>
     </div>
-  <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
+    <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
+  </div>
 
   <script>
     const muzik = document.getElementById("muzik");
