@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Dijital Hatıra Defteri</title>
+  <title>Seninle Olan Anılar</title>
   <style>
     body {
       background-color: #fff;
@@ -15,20 +15,19 @@
     }
 
     .poem-box {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.05);
       padding: 1.5rem;
       border-radius: 12px;
       max-width: 800px;
       margin-bottom: 2rem;
-      border: 2px dashed #f06292;
+      text-align: center;
     }
 
     video {
       max-width: 90%;
       height: auto;
-      border: 2px solid #f06292;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(240, 98, 146, 0.4);
+      border: 3px solid #e91e63;
+      border-radius: 12px;
     }
 
     .music-button {
@@ -36,10 +35,10 @@
       top: 15px;
       right: 15px;
       padding: 10px 20px;
-      background-color: #8e24aa;
+      background-color: #333;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
       z-index: 1000;
     }
@@ -47,41 +46,43 @@
 </head>
 <body>
 
-<button class="music-button" onclick="toggleMusic()">🎵 Müziği Aç</button>
+<button class="music-button" onclick="toggleMusic()">Müziği Aç</button>
 
 <div class="poem-box">
   <h2>Senin İçin...</h2>
   <p>
-    Kelimeler yetmez seni anlatmaya...<br>
-    Zaman geçti, ama hislerim hep aynı.<br>
-    İçimde bir özlem, tarifsiz, derin...<br>
-    Her an seni düşünüyorum, her an seninle yaşıyorum.<br>
+    Kelimeler yetmez seni anlatmaya... <br>
+    Zaman geçti, ama hislerim hep aynı. <br>
+    İçimde bir özlem, tarifsiz, derin... <br>
+    Her an seni düşünüyorum, her an seninle yaşıyorum. <br>
   </p>
 </div>
 
-<video controls>
-  <source src="senin-videon.mp4" type="video/mp4">
+<video controls autoplay>
+  <source src="baris.mp4" type="video/mp4">
   Tarayıcınız video etiketini desteklemiyor.
 </video>
 
-<audio id="backgroundMusic" loop>
-  <source src="senin-muzigin.mp3" type="audio/mpeg">
+<audio id="bgMusic" loop>
+  <source src="muzik.mp3" type="audio/mpeg">
+  Tarayıcınız ses etiketini desteklemiyor.
 </audio>
 
 <script>
-  const music = document.getElementById("backgroundMusic");
-  const button = document.querySelector(".music-button");
-  let playing = false;
-
+  let isMusicPlaying = false;
   function toggleMusic() {
-    if (playing) {
-      music.pause();
-      button.textContent = "🎵 Müziği Aç";
+    const audio = document.getElementById("bgMusic");
+    const button = document.querySelector(".music-button");
+
+    if (isMusicPlaying) {
+      audio.pause();
+      button.textContent = "Müziği Aç";
     } else {
-      music.play();
-      button.textContent = "🔇 Müziği Kapat";
+      audio.play();
+      button.textContent = "Müziği Kapat";
     }
-    playing = !playing;
+
+    isMusicPlaying = !isMusicPlaying;
   }
 </script>
 
