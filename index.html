@@ -41,7 +41,7 @@
     .btn-container {
       margin-top: 20px;
       display: flex;
-      gap: 20px; /* Butonlar arası boşluk */
+      gap: 20px;
       position: relative;
     }
 
@@ -95,9 +95,18 @@
     }
 
     #uyari {
-      margin-top: 15px;
+      position: absolute;
+      bottom: 15px;
       color: #880e4f;
       font-weight: bold;
+      display: none;
+      animation: fadeUyari 1s ease-in-out;
+    }
+
+    @keyframes fadeUyari {
+      0% { opacity: 0; transform: translateY(10px); }
+      50% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
     }
   </style>
 </head>
@@ -107,7 +116,7 @@
   </audio>
   <button id="musicButton" onclick="toggleMusic()">🎵 Müzik Aç</button>
 
-  <div class="container">
+  <div class="container" id="mainContainer">
     <h1>Benimle barışır mısın?</h1>
     <div class="btn-container">
       <button id="evet" onclick="location.href='intro.html'">Evet</button>
@@ -133,14 +142,14 @@
     }
 
     const hayirBtn = document.getElementById("hayir");
-    const container = document.querySelector(".btn-container");
+    const evetBtn = document.getElementById("evet");
+    const uyari = document.getElementById("uyari");
+    const container = document.getElementById("mainContainer");
 
     function getRandomPosition() {
       const containerRect = container.getBoundingClientRect();
-      const buttonWidth = hayirBtn.offsetWidth;
-      const buttonHeight = hayirBtn.offsetHeight;
-      const maxX = containerRect.width - buttonWidth;
-      const maxY = containerRect.height - buttonHeight;
+      const maxX = containerRect.width - hayirBtn.offsetWidth;
+      const maxY = containerRect.height - hayirBtn.offsetHeight;
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
       return { x, y };
@@ -150,6 +159,13 @@
       const pos = getRandomPosition();
       hayirBtn.style.left = `${pos.x}px`;
       hayirBtn.style.top = `${pos.y}px`;
+
+      // Uyarıyı geçici göster
+      uyari.style.display = "block";
+      uyari.style.animation = "fadeUyari 1.5s ease-in-out";
+      setTimeout(() => {
+        uyari.style.display = "none";
+      }, 1500);
     });
   </script>
 </body>
