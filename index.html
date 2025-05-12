@@ -20,8 +20,8 @@
     .container {
       position: relative;
       width: 100%;
-      max-width: 600px;
-      height: 480px;
+      max-width: 400px;
+      height: auto;
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
@@ -34,10 +34,24 @@
       box-sizing: border-box;
     }
 
+    .video-frame {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 3px solid #880e4f;
+      margin-bottom: 15px;
+    }
+
+    .video-frame video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     h1 {
-      font-size: 24px;
+      font-size: 20px;
       color: #880e4f;
-      margin: 10px 0;
+      margin: 0;
     }
 
     .btn-container {
@@ -58,7 +72,7 @@
     #evet {
       background-color: #8e24aa;
       color: white;
-      margin-right: 55px;
+      margin-right: 10px;
     }
 
     #hayir {
@@ -81,21 +95,12 @@
       z-index: 100;
     }
 
-    .video-frame {
-      width: 100%;
-      max-height: 200px;
-      border: 2px solid #880e4f;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-
     #uyari {
       display: none;
       color: #e91e63;
-      font-size: 14px;
+      font-size: 13px;
       margin-top: 10px;
-      animation: fadeinout 1.0s ease-in-out;
+      animation: fadeinout 1.5s ease-in-out;
     }
 
     @keyframes fadeinout {
@@ -114,7 +119,7 @@
 
   <div class="container">
     <div class="video-frame">
-      <video width="100%" height="auto" autoplay muted loop>
+      <video autoplay muted loop playsinline>
         <source src="giris.mp4" type="video/mp4">
         Tarayıcınız video etiketini desteklemiyor.
       </video>
@@ -169,7 +174,7 @@
         uyariGosterildi = true;
         setTimeout(() => {
           uyari.style.display = "none";
-        }, 1000);
+        }, 1500);
       }
     });
   </script>
