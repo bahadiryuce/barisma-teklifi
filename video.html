@@ -7,28 +7,44 @@
     body {
       background: #fff0f5;
       font-family: Arial, sans-serif;
-      padding: 40px 20px;
+      margin: 0;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .poem-box {
+      margin-top: 20px;
       background: #fff;
       padding: 20px;
       border-radius: 12px;
-      text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
       max-width: 800px;
       color: #c2185b;
-      margin-bottom: 30px;
+    }
+
+    video {
+      margin-top: 20px;
+      max-width: 90%;
+      border: 3px solid #e91e63;
+      border-radius: 12px;
+    }
+
+    .envelope-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 30px;
     }
 
     .envelope {
-      position: relative;
       width: 180px;
       height: 120px;
       perspective: 1000px;
+      position: relative;
       margin-bottom: 40px;
       cursor: pointer;
     }
@@ -63,20 +79,21 @@
       overflow: hidden;
     }
 
+    .content {
+      padding: 12px;
+      font-size: 13px;
+      text-align: left;
+      height: 240px;
+      overflow-y: auto;
+    }
+
     .envelope.open .flap {
       transform: rotateX(180deg);
     }
 
     .envelope.open .paper {
       transform: translateY(-160px);
-      z-index: 3;
-    }
-
-    .content {
-      font-size: 14px;
-      color: #333;
-      max-height: 180px;
-      overflow-y: auto;
+      z-index: 3 ;
     }
 
     audio {
@@ -89,31 +106,137 @@
 
 <div class="poem-box">
   <h2>Senin İçin...</h2>
-  <p>Elif’im, her zarfta sana yazdığım bir şiir, kalbim ve bir sesim saklı 💌</p>
+  <p>
+    Zarfların içinde kalbim, şiirlerim ve sesim saklı...<br>
+    Elif’im, bu mektuplar sana. 💌
+  </p>
 </div>
 
-<!-- ZARF -->
-<div class="envelope" onclick="this.classList.toggle('open')">
-  <div class="flap"></div>
-  <div class="paper">
-    <div class="content">
-      <p><strong>1. Mektup</strong></p>
-      <p>
-        Beni en çok ne incitir biliyor musun? <br>
-        Sesinin sessizliğe karışması... <br><br>
-        Zaman geçse de, izlerin geçmiyor içimden. <br>
-        Gözlerimi kapattığımda hâlâ gözlerin. <br>
-        Her satır, sana yazılmış bir dua gibi. <br><br>
-        Seni özledim. Belki çok şey değişti, <br>
-        Ama “seni seviyorum” dediğim o an hâlâ yerinde...
-      </p>
-      <audio controls>
-        <source src="siir1.mp3" type="audio/mpeg">
-        Tarayıcınız bu ses dosyasını desteklemiyor.
-      </audio>
+<video controls autoplay>
+  <source src="baris.mp4" type="video/mp4">
+  Tarayıcınız video etiketini desteklemiyor.
+</video>
+
+<div class="envelope-container">
+  <!-- 8 Zarf -->
+  <!-- Her zarf için ayrı div -->
+  <!-- Şiir + Ses dosyası -->
+  <!-- Şiir uzun olabilir, içerik scroll yapabilir -->
+
+  <!-- Zarflar -->
+  <!-- 1 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>1. Mektup</strong></p>
+        <p>Buraya Elif’e yazılmış uzun şiir gelecek...</p>
+        <audio controls>
+          <source src="siir1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
     </div>
   </div>
+
+  <!-- 2 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>2. Mektup</strong></p>
+        <p>Şiir burada olacak...</p>
+        <audio controls>
+          <source src="siir2.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>3. Mektup</strong></p>
+        <p>Yine duygusal bir şiir...</p>
+        <audio controls>
+          <source src="siir3.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diğerleri aynı şekilde devam eder... -->
+  <!-- 4 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>4. Mektup</strong></p>
+        <p>...</p>
+        <audio controls><source src="siir4.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>5. Mektup</strong></p>
+        <p>...</p>
+        <audio controls><source src="siir5.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>6. Mektup</strong></p>
+        <p>...</p>
+        <audio controls><source src="siir6.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>7. Mektup</strong></p>
+        <p>...</p>
+        <audio controls><source src="siir7.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="envelope">
+    <div class="flap"></div>
+    <div class="paper">
+      <div class="content">
+        <p><strong>8. Mektup</strong></p>
+        <p>...</p>
+        <audio controls><source src="siir8.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+<script>
+  document.querySelectorAll('.envelope').forEach(env => {
+    env.addEventListener('click', () => {
+      env.classList.toggle('open');
+    });
+  });
+</script>
 
 </body>
 </html>
+T
