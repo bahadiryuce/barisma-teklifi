@@ -44,26 +44,36 @@
       z-index: 1000;
     }
 
+    .envelopes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
     .envelope {
-      width: 60px;
-      height: 45px;
-      background: url('envelope.png') no-repeat center/cover;
-      margin: 10px;
+      font-size: 36px;
       cursor: pointer;
-      display: inline-block;
       position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.2);
     }
 
     .letter {
       display: none;
       position: absolute;
-      top: -160px;
-      left: -30px;
+      top: -140px;
+      left: -80px;
       width: 200px;
-      padding: 10px;
-      background: white;
-      border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 12px;
+      background: #fff;
+      border: 2px solid #c2185b;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       z-index: 10;
     }
 
@@ -71,13 +81,6 @@
       font-size: 14px;
       color: #444;
       margin: 0;
-    }
-
-    .envelopes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -101,15 +104,30 @@
 </video>
 
 <div class="envelopes">
-  <!-- 8 mektup -->
-  <div class="envelope"><div class="letter"><p>Bu mektup 1. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 2. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 3. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 4. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 5. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 6. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 7. şiirin yeri.</p></div></div>
-  <div class="envelope"><div class="letter"><p>Bu mektup 8. şiirin yeri.</p></div></div>
+  <div class="envelope">📨
+    <div class="letter"><p>1. Mektup: Elif’im, içimde seninle atan bir kalp var... 💌</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>2. Mektup: Her gülüşün dünyamı aydınlatıyor...</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>3. Mektup: Sensizliğin sesi çok gürültülü...</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>4. Mektup: Seni kırdıysam affet... Kalbim hâlâ seninle.</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>5. Mektup: Gözlerinle başlar her yeni günüm...</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>6. Mektup: Rüyalarım bile sen kokuyor.</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>7. Mektup: Elini bir kez daha tutsam, her şey susar...</p></div>
+  </div>
+  <div class="envelope">📨
+    <div class="letter"><p>8. Mektup: Barışalım Elif... Çünkü sensiz ben eksik bir hikâyeyim.</p></div>
+  </div>
 </div>
 
 <audio id="bgMusic" loop>
@@ -134,9 +152,9 @@
     isMusicPlaying = !isMusicPlaying;
   }
 
-  document.querySelectorAll('.envelope').forEach(envelope => {
-    envelope.addEventListener('click', () => {
-      const letter = envelope.querySelector('.letter');
+  document.querySelectorAll('.envelope').forEach(env => {
+    env.addEventListener('click', () => {
+      const letter = env.querySelector('.letter');
       letter.style.display = (letter.style.display === 'block') ? 'none' : 'block';
     });
   });
