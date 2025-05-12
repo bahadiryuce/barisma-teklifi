@@ -3,145 +3,245 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Romantik Mektuplar</title>
+  <title>Elif'e Mektuplar</title>
   <style>
     body {
-      background: #fff0f5;
-      font-family: Arial, sans-serif;
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .poem-box {
-      margin-top: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 800px;
+    h2 {
       color: #c2185b;
     }
 
-    video {
-      margin-top: 20px;
-      max-width: 90%;
-      border: 3px solid #e91e63;
+    .poem-box {
+      background: #fff;
+      padding: 20px;
       border-radius: 12px;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .envelope-container {
+    .envelope-grid {
+      margin-top: 40px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 40px;
       gap: 30px;
     }
 
     .envelope {
-      width: 100px;
-      height: 70px;
+      position: relative;
+      width: 120px;
+      height: 90px;
       background: #fff;
       border: 2px solid #c2185b;
-      position: relative;
       cursor: pointer;
-      transition: transform 0.3s ease;
-      border-radius: 4px;
       overflow: hidden;
+      transition: all 0.3s ease;
+      border-radius: 6px;
     }
 
     .envelope::before {
       content: "";
       position: absolute;
-      top: -15px;
+      top: -20px;
       left: 0;
       width: 100%;
-      height: 30px;
+      height: 40px;
       background: #c2185b;
       clip-path: polygon(0 100%, 50% 0%, 100% 100%);
-      transition: transform 0.3s ease;
-    }
-
-    .envelope:hover {
-      transform: translateY(-5px);
+      transition: 0.3s ease;
+      z-index: 2;
     }
 
     .envelope.opened::before {
       transform: rotateX(180deg);
+      top: 0;
     }
 
-    .letter {
+    .letter-content {
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
+      max-height: 400px;
       background: #fff;
-      padding: 10px;
-      font-size: 12px;
       border-top: 1px solid #ccc;
-      transition: top 0.5s ease;
+      padding: 15px;
+      font-size: 13px;
       box-sizing: border-box;
-      z-index: 2;
+      overflow-y: auto;
+      z-index: 1;
+      transition: top 0.5s ease;
     }
 
-    .envelope.opened .letter {
-      top: 0;
+    .envelope.opened .letter-content {
+      top: 100%;
+      animation: slideIn 0.5s forwards;
     }
 
+    @keyframes slideIn {
+      from { top: 100%; }
+      to { top: -350px; }
+    }
+
+    audio, video {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
 
 <div class="poem-box">
-  <h2>Senin İçin...</h2>
-  <p>
-    Hislerim kelimelere sığmaz... <br>
-    Bu zarfların içinde kalbim saklı. <br>
-    Her biri sana yazılmış, her biri gerçek. 💌
-  </p>
+  <h2>Elif’e Mektuplar</h2>
+  <p>Her mektubun içinde sana ait satırlar var... ve belki de sesimle can bulan duygular 💖</p>
 </div>
 
-<video controls autoplay>
-  <source src="baris.mp4" type="video/mp4">
-  Tarayıcınız video etiketini desteklemiyor.
-</video>
-
-<div class="envelope-container">
-  <!-- 8 fancy animated envelopes -->
+<div class="envelope-grid">
   
     <div class="envelope">
-      <div class="letter">Mektup 1: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>1. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir1.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir1.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 2: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>2. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir2.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir2.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 3: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>3. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir3.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir3.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 4: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>4. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir4.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir4.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 5: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>5. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir5.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir5.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 6: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>6. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir6.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir6.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 7: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>7. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir7.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir7.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
     <div class="envelope">
-      <div class="letter">Mektup 8: Elif’e yazılmış özel bir cümle buraya gelecek...</div>
+      <div class="letter-content">
+        <p><strong>8. Mektup:</strong><br>
+        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
+        <audio controls>
+          <source src="siir8.mp3" type="audio/mpeg">
+          Tarayıcın bu ses dosyasını desteklemiyor.
+        </audio>
+        <!-- Video da istersen kullanabilirsin:
+        <video controls>
+          <source src="siir8.mp4" type="video/mp4">
+          Tarayıcın bu videoyu desteklemiyor.
+        </video>
+        -->
+      </div>
     </div>
     
 </div>
