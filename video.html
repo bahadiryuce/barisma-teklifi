@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -44,16 +45,25 @@
       z-index: 1000;
     }
 
-    .envelopes {
+    .envelope-columns {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 20px;
-      gap: 10px;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .envelope-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
     }
 
     .envelope {
       font-size: 36px;
+      color: #e91e63;
       cursor: pointer;
       position: relative;
       transition: transform 0.2s ease;
@@ -68,7 +78,7 @@
       position: absolute;
       top: -140px;
       left: -80px;
-      width: 200px;
+      width: 220px;
       padding: 12px;
       background: #fff;
       border: 2px solid #c2185b;
@@ -81,6 +91,25 @@
       font-size: 14px;
       color: #444;
       margin: 0;
+    }
+
+    .column-line {
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background-color: #c2185b;
+      opacity: 0.3;
+      top: 40px;
+    }
+
+    .left-line {
+      left: 10px;
+      transform: rotate(-10deg);
+    }
+
+    .right-line {
+      right: 10px;
+      transform: rotate(10deg);
     }
   </style>
 </head>
@@ -103,30 +132,22 @@
   Tarayıcınız video etiketini desteklemiyor.
 </video>
 
-<div class="envelopes">
-  <div class="envelope">📨
-    <div class="letter"><p>1. Mektup: Elif’im, içimde seninle atan bir kalp var... 💌</p></div>
+<div class="envelope-columns">
+  <div class="column-line left-line"></div>
+  <div class="column-line right-line"></div>
+
+  <div class="envelope-column">
+    <div class="envelope">💌<div class="letter"><p>1. Mektup: Seni özledim Elif... çok.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>2. Mektup: Gözlerin hâlâ içimde bir cennet.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>3. Mektup: Her hatıranda bir tebessüm saklı.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>4. Mektup: Kalbim affetmeni bekliyor.</p></div></div>
   </div>
-  <div class="envelope">📨
-    <div class="letter"><p>2. Mektup: Her gülüşün dünyamı aydınlatıyor...</p></div>
-  </div>
-  <div class="envelope">📨
-    <div class="letter"><p>3. Mektup: Sensizliğin sesi çok gürültülü...</p></div>
-  </div>
-  <div class="envelope">📨
-    <div class="letter"><p>4. Mektup: Seni kırdıysam affet... Kalbim hâlâ seninle.</p></div>
-  </div>
-  <div class="envelope">📨
-    <div class="letter"><p>5. Mektup: Gözlerinle başlar her yeni günüm...</p></div>
-  </div>
-  <div class="envelope">📨
-    <div class="letter"><p>6. Mektup: Rüyalarım bile sen kokuyor.</p></div>
-  </div>
-  <div class="envelope">📨
-    <div class="letter"><p>7. Mektup: Elini bir kez daha tutsam, her şey susar...</p></div>
-  </div>
-  <div class="envelope">📨
-    <div class="letter"><p>8. Mektup: Barışalım Elif... Çünkü sensiz ben eksik bir hikâyeyim.</p></div>
+
+  <div class="envelope-column">
+    <div class="envelope">💌<div class="letter"><p>5. Mektup: Sensiz geçen zaman hep eksik.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>6. Mektup: Umut, senin adını fısıldıyor.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>7. Mektup: Her şey geçer, yeter ki sen gül.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>8. Mektup: Barışmak demek, yeniden nefes almak demek.</p></div></div>
   </div>
 </div>
 
