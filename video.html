@@ -1,255 +1,160 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Elif'e Mektuplar</title>
+  <title>Seninle Olan Anılar</title>
   <style>
     body {
       background-color: #fff0f5;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 40px 20px;
+      font-family: Arial, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    h2 {
-      color: #c2185b;
+      padding: 20px;
+      text-align: center;
     }
 
     .poem-box {
-      background: #fff;
-      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
       border-radius: 12px;
       max-width: 800px;
+      margin-bottom: 1.5rem;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      color: #c2185b;
     }
 
-    .envelope-grid {
-      margin-top: 40px;
+    video {
+      max-width: 90%;
+      height: auto;
+      border: 3px solid #e91e63;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .music-button {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .envelope-columns {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 0;
       gap: 30px;
     }
 
+    .envelope-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+
     .envelope {
+      font-size: 36px;
+      color: #e91e63;
+      cursor: pointer;
       position: relative;
-      width: 120px;
-      height: 90px;
+      transition: transform 0.2s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.2);
+    }
+
+    .letter {
+      display: none;
+      position: absolute;
+      top: -140px;
+      left: -80px;
+      width: 220px;
+      padding: 12px;
       background: #fff;
       border: 2px solid #c2185b;
-      cursor: pointer;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border-radius: 6px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 10;
     }
 
-    .envelope::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background: #c2185b;
-      clip-path: polygon(0 100%, 50% 0%, 100% 100%);
-      transition: 0.3s ease;
-      z-index: 2;
-    }
-
-    .envelope.opened::before {
-      transform: rotateX(180deg);
-      top: 0;
-    }
-
-    .letter-content {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      max-height: 400px;
-      background: #fff;
-      border-top: 1px solid #ccc;
-      padding: 15px;
-      font-size: 13px;
-      box-sizing: border-box;
-      overflow-y: auto;
-      z-index: 1;
-      transition: top 0.5s ease;
-    }
-
-    .envelope.opened .letter-content {
-      top: 100%;
-      animation: slideIn 0.5s forwards;
-    }
-
-    @keyframes slideIn {
-      from { top: 100%; }
-      to { top: -350px; }
-    }
-
-    audio, video {
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
+    .letter p {
+      font-size: 14px;
+      color: #444;
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
+<button class="music-button" onclick="toggleMusic()">Müziği Aç</button>
+
 <div class="poem-box">
-  <h2>Elif’e Mektuplar</h2>
-  <p>Her mektubun içinde sana ait satırlar var... ve belki de sesimle can bulan duygular 💖</p>
+  <h2>Senin İçin...</h2>
+  <p>
+    Kelimeler yetmez seni anlatmaya... <br>
+    Zaman geçti, ama hislerim hep aynı. <br>
+    İçimde bir özlem, tarifsiz, derin... <br>
+    Her an seni düşünüyorum, her an seninle yaşıyorum. <br>
+  </p>
 </div>
 
-<div class="envelope-grid">
-  
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>1. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir1.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir1.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>2. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir2.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir2.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>3. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir3.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir3.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>4. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir4.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir4.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>5. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir5.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir5.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>6. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir6.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir6.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>7. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir7.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir7.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
-    <div class="envelope">
-      <div class="letter-content">
-        <p><strong>8. Mektup:</strong><br>
-        Elif’im, bu satırlar sana... Buraya şiirini yazabilirsin. Duygular uzun olsun, içten olsun.</p>
-        <audio controls>
-          <source src="siir8.mp3" type="audio/mpeg">
-          Tarayıcın bu ses dosyasını desteklemiyor.
-        </audio>
-        <!-- Video da istersen kullanabilirsin:
-        <video controls>
-          <source src="siir8.mp4" type="video/mp4">
-          Tarayıcın bu videoyu desteklemiyor.
-        </video>
-        -->
-      </div>
-    </div>
-    
+<video controls autoplay>
+  <source src="baris.mp4" type="video/mp4">
+  Tarayıcınız video etiketini desteklemiyor.
+</video>
+
+<div class="envelope-columns">
+  <div class="envelope-column">
+    <div class="envelope">💌<div class="letter"><p>1. Mektup: Seni özledim Elif... çok.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>2. Mektup: Gözlerin hâlâ içimde bir cennet.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>3. Mektup: Her hatıranda bir tebessüm saklı.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>4. Mektup: Kalbim affetmeni bekliyor.</p></div></div>
+  </div>
+
+  <div class="envelope-column">
+    <div class="envelope">💌<div class="letter"><p>5. Mektup: Sensiz geçen zaman hep eksik.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>6. Mektup: Umut, senin adını fısıldıyor.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>7. Mektup: Her şey geçer, yeter ki sen gül.</p></div></div>
+    <div class="envelope">💌<div class="letter"><p>8. Mektup: Barışmak demek, yeniden nefes almak demek.</p></div></div>
+  </div>
 </div>
+
+<audio id="bgMusic" loop>
+  <source src="muzik.mp3" type="audio/mpeg">
+  Tarayıcınız ses etiketini desteklemiyor.
+</audio>
 
 <script>
+  let isMusicPlaying = false;
+  function toggleMusic() {
+    const audio = document.getElementById("bgMusic");
+    const button = document.querySelector(".music-button");
+
+    if (isMusicPlaying) {
+      audio.pause();
+      button.textContent = "Müziği Aç";
+    } else {
+      audio.play();
+      button.textContent = "Müziği Kapat";
+    }
+
+    isMusicPlaying = !isMusicPlaying;
+  }
+
   document.querySelectorAll('.envelope').forEach(env => {
     env.addEventListener('click', () => {
-      env.classList.toggle('opened');
+      const letter = env.querySelector('.letter');
+      letter.style.display = (letter.style.display === 'block') ? 'none' : 'block';
     });
   });
 </script>
