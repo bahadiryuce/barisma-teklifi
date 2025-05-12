@@ -21,21 +21,23 @@
       position: relative;
       width: 100%;
       max-width: 600px;
-      height: 400px;
+      height: 480px;
       background-color: white;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
       text-align: center;
-      padding: 30px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     h1 {
       font-size: 24px;
       color: #880e4f;
+      margin: 10px 0;
     }
 
     .btn-container {
@@ -56,6 +58,7 @@
     #evet {
       background-color: #8e24aa;
       color: white;
+      margin-right: 10px;
     }
 
     #hayir {
@@ -77,6 +80,30 @@
       cursor: pointer;
       z-index: 100;
     }
+
+    .video-frame {
+      width: 100%;
+      max-height: 200px;
+      border: 2px solid #880e4f;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    #uyari {
+      display: none;
+      color: #e91e63;
+      font-size: 14px;
+      margin-top: 10px;
+      animation: fadeinout 1.5s ease-in-out;
+    }
+
+    @keyframes fadeinout {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -86,12 +113,19 @@
   <button id="musicButton" onclick="toggleMusic()">🎵 Müzik Aç</button>
 
   <div class="container">
+    <div class="video-frame">
+      <video width="100%" height="auto" autoplay muted loop>
+        <source src="giris.mp4" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+      </video>
+    </div>
     <h1>Benimle barışır mısın?</h1>
     <div class="btn-container">
       <button id="evet" onclick="location.href='intro.html'">Evet</button>
       <button id="hayir">Hayır</button>
     </div>
-  <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
+    <div id="uyari">Benden öyle kolay kurtulamazsın!</div>
+  </div>
 
   <script>
     const muzik = document.getElementById("muzik");
@@ -111,6 +145,8 @@
 
     const hayirBtn = document.getElementById("hayir");
     const container = document.querySelector(".btn-container");
+    const uyari = document.getElementById("uyari");
+    let uyariGosterildi = false;
 
     function getRandomPosition() {
       const containerRect = container.getBoundingClientRect();
@@ -127,6 +163,14 @@
       const pos = getRandomPosition();
       hayirBtn.style.left = `${pos.x}px`;
       hayirBtn.style.top = `${pos.y}px`;
+
+      if (!uyariGosterildi) {
+        uyari.style.display = "block";
+        uyariGosterildi = true;
+        setTimeout(() => {
+          uyari.style.display = "none";
+        }, 1500);
+      }
     });
   </script>
 </body>
