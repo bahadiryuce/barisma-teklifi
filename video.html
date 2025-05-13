@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -50,7 +49,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       cursor: pointer;
-      overflow: hidden;
+      overflow: visible;
       transition: transform 0.3s ease;
     }
 
@@ -62,26 +61,33 @@
       position: absolute;
       top: 100%;
       left: 0;
-      width: 100%;
+      width: 260px;
+      max-height: 300px;
       background: white;
-      padding: 10px;
+      padding: 12px;
       font-size: 11px;
-      border-top: 1px solid #c2185b;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      border: 2px solid #c2185b;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       box-sizing: border-box;
       transition: top 0.4s ease;
       z-index: 10;
-      max-height: 200px;
       overflow-y: auto;
+      display: none;
+      border-radius: 8px;
     }
 
     .envelope.open .letter {
-      top: 0;
+      display: block;
+    }
+
+    .letter p {
+      margin: 6px 0;
     }
 
     audio {
       width: 100%;
       margin-top: 10px;
+      display: block;
     }
   </style>
 </head>
@@ -101,87 +107,77 @@
 </video>
 
 <div class="envelope-container">
-
+  <!-- 1 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>1. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir1.mp3" type="audio/mpeg">
-      </audio>
+      <p>Buraya uzun şiir yazılabilir. Bu satırlar Elif için özel.</p>
+      <audio controls><source src="siir1.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 2 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>2. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir2.mp3" type="audio/mpeg">
-      </audio>
+      <p>Gözlerinin içi gibi aydınlık satırlar burada olacak.</p>
+      <audio controls><source src="siir2.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 3 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>3. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir3.mp3" type="audio/mpeg">
-      </audio>
+      <p>Hasretle geçen günlerin ardından umut dolu bir şiir.</p>
+      <audio controls><source src="siir3.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 4 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>4. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir4.mp3" type="audio/mpeg">
-      </audio>
+      <p>Kalbimle yazılmış cümleler bu zarfta seni bekliyor.</p>
+      <audio controls><source src="siir4.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 5 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>5. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir5.mp3" type="audio/mpeg">
-      </audio>
+      <p>Geceye yazılmış, gözyaşına saklanmış şiirler burada.</p>
+      <audio controls><source src="siir5.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 6 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>6. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir6.mp3" type="audio/mpeg">
-      </audio>
+      <p>“Seni seviyorum”un sessiz hali, bu zarftan okunur.</p>
+      <audio controls><source src="siir6.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 7 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>7. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir7.mp3" type="audio/mpeg">
-      </audio>
+      <p>Sakladığım hisler, kelimelere döküldü işte burada.</p>
+      <audio controls><source src="siir7.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
 
+  <!-- 8 -->
   <div class="envelope" onclick="this.classList.toggle('open')">
     <div class="letter">
       <p><strong>8. Mektup</strong></p>
-      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
-      <audio controls>
-        <source src="siir8.mp3" type="audio/mpeg">
-      </audio>
+      <p>Barışmak demek, yeniden başlamak. Bu zarfta umut var.</p>
+      <audio controls><source src="siir8.mp3" type="audio/mpeg"></audio>
     </div>
   </div>
-
 </div>
 
 </body>
