@@ -6,7 +6,7 @@
   <title>Elif’e Mektuplar</title>
   <style>
     body {
-      background: #fff0f5;
+      background-color: #fff0f5;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
@@ -42,57 +42,41 @@
     }
 
     .envelope {
+      position: relative;
       width: 160px;
       height: 100px;
-      position: relative;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #c2185b;
-      clip-path: polygon(0 100%, 50% 0%, 100% 100%);
-      transform-origin: top;
-      transition: transform 0.5s ease;
-      z-index: 2;
-    }
-
-    .paper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 240px;
-      background-color: white;
+      background: linear-gradient(145deg, #f8bbd0, #f48fb1);
       border: 2px solid #c2185b;
-      border-radius: 6px;
-      padding: 12px;
+      border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transform: translateY(0);
-      transition: transform 0.6s ease;
-      z-index: 1;
+      cursor: pointer;
       overflow: hidden;
+      transition: transform 0.3s ease;
     }
 
-    .content {
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .letter {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: white;
+      padding: 10px;
       font-size: 11px;
-      color: #333;
-      max-height: 190px;
+      border-top: 1px solid #c2185b;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      transition: top 0.4s ease;
+      z-index: 10;
+      max-height: 200px;
       overflow-y: auto;
     }
 
-    .envelope.open .flap {
-      transform: rotateX(145deg);
-    }
-
-    .envelope.open .paper {
-      transform: translateY(-150px);
-      z-index: 3;
+    .envelope.open .letter {
+      top: 0;
     }
 
     audio {
@@ -106,8 +90,8 @@
 <div class="poem-box">
   <h2>Senin İçin...</h2>
   <p>
-    Zarfların içinde kalbim, şiirlerim ve sesim saklı...<br>
-    Elif’im, bu mektuplar sana. 💌
+    Bu mektupların her biri sana ait bir parça...<br>
+    İçinde kelimelerim, şiirim, sesim var Elif’im. 💌
   </p>
 </div>
 
@@ -117,29 +101,87 @@
 </video>
 
 <div class="envelope-container">
-  <!-- Örnek Mektup -->
+
   <div class="envelope" onclick="this.classList.toggle('open')">
-    <div class="flap"></div>
-    <div class="paper">
-      <div class="content">
-        <p><strong>1. Mektup</strong></p>
-        <p>
-          Elif’im...<br>
-          Bu şiir sana yazıldı, kalbimle.<br>
-          Her mısrada sana dair bir umut var.<br><br>
-          Geceler uzun, sensiz geçen zaman soğuk...<br>
-          Ama sesimle, şiirimle sana sarılmak istiyorum.<br>
-          Bu mektubu açtığında, içinden sadece kelimeler değil,<br>
-          Belki affetme duygusu da çıksın istiyorum...<br>
-        </p>
-        <audio controls>
-          <source src="siir1.mp3" type="audio/mpeg">
-        </audio>
-      </div>
+    <div class="letter">
+      <p><strong>1. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir1.mp3" type="audio/mpeg">
+      </audio>
     </div>
   </div>
 
-  <!-- Diğer 7 mektubu aynı yapıyla çoğaltabilirsin -->
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>2. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir2.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>3. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir3.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>4. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir4.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>5. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir5.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>6. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir6.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>7. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir7.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+  <div class="envelope" onclick="this.classList.toggle('open')">
+    <div class="letter">
+      <p><strong>8. Mektup</strong></p>
+      <p>Elif’e yazılmış şiir buraya gelecek... uzun, içten ve özlem dolu satırlar için bu alan yeterlidir.</p>
+      <audio controls>
+        <source src="siir8.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
 </div>
 
 </body>
