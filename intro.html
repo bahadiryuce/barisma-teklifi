@@ -2,33 +2,101 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Intro</title>
+  <title>Elif'e Özel</title>
   <style>
     body {
-      background-color: #fff0f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      font-size: 24px;
-      color: #c2185b;
       text-align: center;
-      opacity: 0;
-      animation: fadein 1.5s forwards;
+      margin-top: 100px;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
     }
 
-    @keyframes fadein {
-      to { opacity: 1; }
+    .message {
+      font-size: 40px;
+      color: #ff69b4;
+      font-weight: bold;
+    }
+
+    .celebrate-button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .celebrate-button:hover {
+      background-color: #ff69b4;
+    }
+
+    .highlight-text {
+      transform: translateY(-50px);
+      opacity: 0;
+      animation: slideIn 1.5s forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: float 4s infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
     }
   </style>
-  <script>
-    setTimeout(function() {
-      window.location.href = "video.html";
-    }, 2000);
-  </script>
 </head>
 <body>
-  Piremsesim seni çok seviyorum 💖
+  <div class="message" id="message"> PİREMSESİMM SENİ ÇOK SEVİYORUM💖<br>SEN HAYATIMDA<br>OLDUĞUNDA..</div>
+  <div id="hearts"></div>
+  <button class="celebrate-button" id="celebrateButton">OLDUĞUNDA..</button>
+
+  <script>
+    document.getElementById("celebrateButton").addEventListener("click", function () {
+      document.body.style.background = "#ffccdd";
+      const message = document.getElementById("message");
+      message.innerText = "DÜNYA DAHA GÜZEL";
+      message.classList.add("highlight-text");
+      this.style.background = "#ff69b4";
+
+      const heartsContainer = document.getElementById("hearts");
+      heartsContainer.innerHTML = "";
+
+      for (let i = 0; i < 50; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        heartsContainer.appendChild(heart);
+      }
+
+      setTimeout(function () {
+        window.location.href = "video.html";
+      }, 2500); // 2.5 saniye sonra video.html'e yönlendir
+    });
+  </script>
 </body>
 </html>
