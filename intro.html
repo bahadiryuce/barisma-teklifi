@@ -14,15 +14,21 @@
       font-size: 24px;
       color: #c2185b;
       text-align: center;
+      opacity: 0;
+      animation: fadein 1.5s forwards;
+    }
+
+    @keyframes fadein {
+      to { opacity: 1; }
     }
   </style>
   <script>
     setTimeout(function() {
       window.location.href = "video.html";
-    }, 2000); // 2 saniye sonra yönlendir
+    }, 2000);
   </script>
 </head>
 <body>
- Piremsesim seni çok seviyorum 💖
+  Piremsesim seni çok seviyorum 💖
 </body>
 </html>
